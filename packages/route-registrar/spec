@@ -1,0 +1,8 @@
+---
+name: route-registrar
+
+dependencies:
+- golang1.4
+
+files:
+- route-registrar/**/*
