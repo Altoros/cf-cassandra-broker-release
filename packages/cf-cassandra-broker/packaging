@@ -1,0 +1,16 @@
+set -e
+
+REPO_NAME=github.com/Altoros/cf-cassandra-broker
+REPO_DIR=${BOSH_INSTALL_TARGET}/src/${REPO_NAME}
+
+mkdir -p $(dirname $REPO_DIR)
+
+cp -a $(basename $REPO_NAME)/ $REPO_DIR
+
+export GOROOT=$(readlink -nf /var/vcap/packages/golang)
+export GOPATH=$BOSH_INSTALL_TARGET:${REPO_DIR}/cmd/cf-cassandra-broker/Godeps/_workspace:${REPO_DIR}/cmd/cf-cassandra-broker-migrate/Godeps/_workspace
+export PATH=$GOROOT/bin:$PATH
+
+
+go install ${REPO_NAME}/cmd/cf-cassandra-broker
+go install ${REPO_NAME}/cmd/cf-cassandra-broker-migrate

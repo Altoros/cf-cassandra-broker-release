@@ -1,0 +1,8 @@
+---
+name: cf-cassandra-broker
+
+dependencies:
+- golang
+
+files:
+- cf-cassandra-broker/**/*

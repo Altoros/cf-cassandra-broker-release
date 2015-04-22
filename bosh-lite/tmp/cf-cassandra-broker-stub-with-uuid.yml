@@ -1,0 +1,33 @@
+---
+name: cf-warden-cassandra-broker
+director_uuid: c6f166bd-ddac-4f7d-9c57-d11c6ad5133b
+releases:
+  - name: cf-cassnadra-broker
+    version: latest
+
+meta:
+  nats:
+    machines:
+      - 10.244.0.6
+    password: nats
+    port: 4222
+    user: nats
+  cf:
+    apps_domain: (( merge || "10.244.0.34.xip.io" ))
+    external_domain: (( merge || "10.244.0.34.xip.io" ))
+    admin_username: admin
+    admin_password: admin
+    skip_ssl_validation: true
+
+jobs:
+  - name: cf-cassandra-broker
+    properties:
+      username: admin
+      password: password
+      cassandra:
+        nodes:
+        - 127.0.0.1
+        username: cassandra
+        password: cassandra
+
+      catalog: {}

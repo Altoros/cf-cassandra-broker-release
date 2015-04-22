@@ -1,0 +1,11 @@
+check process cassandra-broker
+  with pidfile /var/vcap/sys/run/cf-cassandra-broker/cf-cassandra-broker.pid
+  start program "/var/vcap/jobs/cf-cassandra-broker/bin/cf-cassandra-broker_ctl start"
+  stop program "/var/vcap/jobs/cf-cassandra-broker/bin/cf-cassandra-broker_ctl stop"
+  group vcap
+
+check process route-registrar
+  with pidfile /var/vcap/sys/run/route-registrar/route-registrar.pid
+  start program "/var/vcap/jobs/cf-rabbitmq-broker/bin/route-registrar_ctl start"
+  stop program "/var/vcap/jobs/cf-rabbitmq-broker/bin/route-registrar_ctl stop"
+  group vcap

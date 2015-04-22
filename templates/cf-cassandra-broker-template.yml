@@ -1,0 +1,95 @@
+---
+meta:
+  # override this in your stub to set the environment name,
+  # which is used for the deployment name
+  #
+  # i.e. cf-tabasco
+  environment: ~
+  nats: (( merge ))
+  cf:
+  #   apps_domain: (( merge ))
+    external_domain: (( merge ))
+  #   api_url: (( "https://api." meta.cf.external_domain ))
+  #   admin_username: (( merge ))
+  #   admin_password: (( merge ))
+  #   skip_ssl_validation: (( merge || nil ))
+  syslog_aggregator: ~
+
+name: (( meta.environment "-cassandra-broker" ))
+director_uuid: (( merge ))
+
+releases:
+- name: cf-cassandra-broker
+  version: latest
+
+compilation:
+  workers: 2
+  network: cassandra-network
+  reuse_compilation_vms: true
+  cloud_properties: (( merge ))
+
+update:
+  canaries: 1
+  canary_watch_time: 30000-600000
+  update_watch_time: 30000-600000
+  max_in_flight: 1
+
+networks: (( merge ))
+
+resource_pools:
+  - name: cassandra-small
+    network: cassandra-network
+    stemcell: (( merge ))
+    cloud_properties: (( merge ))
+  - name: cassandra-medium
+    network: cassandra-network
+    stemcell: (( merge ))
+    cloud_properties: (( merge ))
+
+jobs:
+  - name: cf-cassandra-broker
+    release: cf-cassandra-broker
+    template: cf-cassandra-broker
+    instances: 1
+    resource_pool: cassandra-small
+    networks:
+    - name: cassandra-network
+    properties:
+      <<: (( merge || nil ))
+      username: (( merge ))
+      password: (( merge ))
+      cassandra:
+        <<: (( merge || nil ))
+        nodes: (( merge ))
+        username: (( merge ))
+        password: (( merge ))
+      catalog:
+        services:
+        - bindable: true
+          name: Apache Cassandra
+          description: Open source distributed database management system
+          id: 33d2eeb0-0236-4c83-b494-da3faeb5b2e8
+          metadata:
+            displayName: Apache Cassandra
+            documentationUrl: http://docs.datastax.com/en/cassandra/2.0/cassandra/gettingStartedCassandraIntro.html
+            imageUrl: http://cassandra.apache.org/media/img/cassandra_logo.png
+            longDescription:
+            providerDisplayName: Apache Cassandra
+            supportUrl:
+          plans:
+          - name: free
+            description: A separate keyspace with unlimited access
+            id: 946ce484-376b-41b4-8c4e-4bc830676115
+            metadata:
+              costs:
+              - amount:
+                  usd: 0.0
+                unit: MONTHLY
+              displayName: Keyspace
+          tags:
+          - nosql
+          - database
+      nats: (( meta.nats ))
+      network_name: cassandra-network
+      external_host: (( "cassandra." meta.cf.external_domain ))
+properties: {}

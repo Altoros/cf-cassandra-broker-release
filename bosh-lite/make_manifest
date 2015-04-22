@@ -1,0 +1,32 @@
+#!/bin/bash
+
+BOSH_RELEASES_DIR=${BOSH_RELEASES_DIR:-~/workspace}
+CASSANDRA_BROKER_RELEASE_DIR=${CASSANDRA_BROKER_RELEASE_DIR:-$BOSH_RELEASES_DIR/cf-cassandra-broker-release}
+
+if [[ ! -d $CASSANDRA_BROKER_RELEASE_DIR ]]; then
+  echo "Cannot find cf-cassandra-broker-release at $CASSANDRA_BROKER_RELEASE_DIR; override with \$CASSANDRA_BROKER_RELEASE_DIR variable"
+  exit 1
+fi
+
+# By default use 3 node stub
+cassandra_broker_stub="cf-cassandra-broker-stub.yml"
+
+cd $CASSANDRA_BROKER_RELEASE_DIR
+
+# If the requested stub doesn't exist there's nothing more we can do, so fail.
+if [ ! -f bosh-lite/$cassandra_broker_stub ]; then
+  echo "stub not found: $cassandra_broker_stub"
+  exit 1
+fi
+
+mkdir -p bosh-lite/tmp
+mkdir -p bosh-lite/manifests
+cp bosh-lite/$cassandra_broker_stub bosh-lite/tmp/cf-cassandra-broker-stub-with-uuid.yml
+DIRECTOR_UUID=$(bosh status | grep UUID | awk '{print $2}')
+echo $DIRECTOR_UUID
+perl -pi -e "s/PLACEHOLDER-DIRECTOR-UUID/$DIRECTOR_UUID/g" bosh-lite/tmp/cf-cassandra-broker-stub-with-uuid.yml
+
+# The first argument is used above - pass the remaining arguments to the spiff script
+shift
+$CASSANDRA_BROKER_RELEASE_DIR/generate_deployment_manifest warden bosh-lite/tmp/cf-cassandra-broker-stub-with-uuid.yml $* > bosh-lite/manifests/cf-cassandra-broker-manifest.yml
+bosh deployment bosh-lite/manifests/cf-cassandra-broker-manifest.yml

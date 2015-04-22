@@ -1,0 +1,44 @@
+#!/bin/bash -e
+
+PACKAGE_DIR=/var/vcap/packages/cf-cassandra-broker
+JOB_DIR=/var/vcap/jobs/cf-cassandra-broker
+RUN_DIR=/var/vcap/sys/run/cf-cassandra-broker
+LOG_DIR=/var/vcap/sys/log/cf-cassandra-broker
+PIDFILE=$RUN_DIR/cf-cassandra-broker.pid
+export JOB_INDEX=<%= index %>
+
+source /var/vcap/packages/common/utils.sh
+
+case $1 in
+
+  start)
+    pid_guard $PIDFILE "cf-cassandra-broker"
+
+    mkdir -p $RUN_DIR
+    mkdir -p $LOG_DIR
+
+    chown -R vcap:vcap $RUN_DIR
+    chown -R vcap:vcap $LOG_DIR
+
+    echo $$ > $PIDFILE
+
+    # Run the migrations only on the first node
+    if [ $JOB_INDEX -eq 0 ]; then
+        $PACKAGE_DIR/bin/cf-cassandra-broker-migrate -c $JOB_DIR/config/cf-cassandra-broker.yml
+    fi
+
+    $PACKAGE_DIR/bin/cf-cassandra-broker -c $JOB_DIR/config/cf-cassandra-broker.yml
+
+    ;;
+
+  stop)
+    kill_and_wait $PIDFILE
+
+    ;;
+
+  *)
+    echo "Usage: cf-cassandra-broker_ctl {start|stop}"
+
+    ;;
+
+esac

@@ -2,7 +2,7 @@
 name: route-registrar
 
 dependencies:
-- golang1.4
+- golang
 
 files:
 - route-registrar/**/*

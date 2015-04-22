@@ -1,3 +1,6 @@
 [submodule "src/route-registrar"]
 	path = src/route-registrar
 	url = https://github.com/cloudfoundry-incubator/route-registrar.git
+[submodule "shared"]
+	path = shared
+	url = https://github.com/cloudfoundry/shared-release-packages.git

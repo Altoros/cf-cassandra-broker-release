@@ -1,0 +1,55 @@
+---
+name: cf-cassandra-broker
+
+description: "Cassandra database service broker"
+
+templates:
+  cf-cassandra-broker.yml.erb: config/cf-cassandra-broker.yml
+  cf-cassandra-broker_ctl.erb: bin/cf-cassandra-broker_ctl
+  registrar_settings.yml.erb: config/registrar_settings.yml
+  route-registrar_ctl.erb: bin/route-registrar_ctl
+
+packages:
+- golang
+- cf-cassandra-broker
+- common
+- route-registrar
+
+properties:
+  username:
+    description: "Basic Auth username for the service broker"
+  password:
+    description: "Basic Auth password for the service broker"
+  port:
+    description: "Port for registering the service broker"
+    default: 80
+
+  cassandra.nodes:
+    description: "Cassandra cluster nodes"
+  cassandra.port:
+    description: "Cassandra port"
+    default: 9042
+  cassandra.username:
+    description: "Superuser username"
+  cassandra.password:
+    description: "Superuser password"
+  cassandra.keyspace:
+    description: "Administrative keyspace name"
+    default: "cf-broker"
+
+  catalog:
+    description: "Services catalog"
+
+  nats.user:
+    description: "Username for broker to connect to NATS"
+  nats.password:
+    description: "Password for broker to connect to NATS"
+  nats.port:
+    description: "IP port of Cloud Foundry NATS server"
+  nats.machines:
+    description: "IP of each NATS cluster member."
+
+  external_host:
+    description: "Host used to register the broker. Domain is often the same as system domain."
+  network_name:
+    description: "The name of the network (needed for the syslog aggregator)"
