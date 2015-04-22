@@ -55,9 +55,50 @@ jobs:
   release: cf-cassandra-broker
   resource_pool: cassandra-small
   template: cf-cassandra-broker
+- instances: 1
+  lifecycle: errand
+  name: broker-registrar
+  networks:
+  - name: cassandra-network
+  properties:
+    broker:
+      host: cassandra.10.244.0.34.xip.io
+      name: cassandra
+      password: password
+      username: admin
+    cf:
+      admin_password: admin
+      admin_username: admin
+      api_url: https://api.10.244.0.34.xip.io
+  release: cf-cassandra-broker
+  resource_pool: cassandra-small
+  template: broker-registrar
+- instances: 1
+  lifecycle: errand
+  name: broker-deregistrar
+  networks:
+  - name: cassandra-network
+  properties:
+    broker:
+      host: cassandra.10.244.0.34.xip.io
+      name: cassandra
+      password: password
+      username: admin
+    cf:
+      admin_password: admin
+      admin_username: admin
+      api_url: https://api.10.244.0.34.xip.io
+  release: cf-cassandra-broker
+  resource_pool: cassandra-small
+  template: broker-deregistrar
 meta:
   cf:
+    admin_password: admin
+    admin_username: admin
+    api_url: https://api.10.244.0.34.xip.io
+    apps_domain: 10.244.0.34.xip.io
     external_domain: 10.244.0.34.xip.io
+    skip_ssl_validation: true
   environment: null
   nats:
     machines:

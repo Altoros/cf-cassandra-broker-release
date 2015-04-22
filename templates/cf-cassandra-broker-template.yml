@@ -7,12 +7,12 @@ meta:
   environment: ~
   nats: (( merge ))
   cf:
-  #   apps_domain: (( merge ))
+    apps_domain: (( merge ))
     external_domain: (( merge ))
-  #   api_url: (( "https://api." meta.cf.external_domain ))
-  #   admin_username: (( merge ))
-  #   admin_password: (( merge ))
-  #   skip_ssl_validation: (( merge || nil ))
+    api_url: (( "https://api." meta.cf.external_domain ))
+    admin_username: (( merge ))
+    admin_password: (( merge ))
+    skip_ssl_validation: (( merge || nil ))
   syslog_aggregator: ~
 
 name: (( meta.environment "-cassandra-broker" ))
@@ -92,4 +92,41 @@ jobs:
       nats: (( meta.nats ))
       network_name: cassandra-network
       external_host: (( "cassandra." meta.cf.external_domain ))
+  - name: broker-registrar
+    template: broker-registrar
+    release: cf-cassandra-broker
+    instances: 1
+    resource_pool: cassandra-small
+    lifecycle: errand
+    networks:
+    - name: cassandra-network
+    properties:
+      cf:
+        api_url: (( meta.cf.api_url ))
+        admin_username: (( meta.cf.admin_username ))
+        admin_password: (( meta.cf.admin_password ))
+      broker:
+        name: cassandra
+        host: (( jobs.cf-cassandra-broker.properties.external_host ))
+        username: (( jobs.cf-cassandra-broker.properties.username ))
+        password: (( jobs.cf-cassandra-broker.properties.password ))
+  - name: broker-deregistrar
+    template: broker-deregistrar
+    release: cf-cassandra-broker
+    instances: 1
+    resource_pool: cassandra-small
+    lifecycle: errand
+    networks:
+    - name: cassandra-network
+    properties:
+      cf:
+        api_url: (( meta.cf.api_url ))
+        admin_username: (( meta.cf.admin_username ))
+        admin_password: (( meta.cf.admin_password ))
+      broker:
+        name: cassandra
+        host: (( jobs.cf-cassandra-broker.properties.external_host ))
+        username: (( jobs.cf-cassandra-broker.properties.username ))
+        password: (( jobs.cf-cassandra-broker.properties.password ))
+
 properties: {}
