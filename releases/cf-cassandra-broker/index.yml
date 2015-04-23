@@ -1,13 +1,5 @@
 ---
 builds:
-  d273f078-8aac-44c5-945f-025f289eeee6:
+  898153fb-82d4-466f-baf2-5d484fb2c6ae:
     version: '1'
-  bfde6473-2446-4b61-b852-9d0bd4b576d2:
-    version: '2'
-  a0c22a31-f4c5-4e82-9003-cb21d26f40f4:
-    version: '3'
-  e5e057eb-1bbe-4e31-adee-c5c39f0ac8a7:
-    version: '4'
-  cfb105d5-6333-4c58-9489-43865feee0d1:
-    version: '5'
 format-version: '2'

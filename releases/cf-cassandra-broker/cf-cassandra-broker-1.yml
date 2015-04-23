@@ -3,50 +3,50 @@ packages:
 - name: broker-registrar
   version: 46213225d775263932e072a461e524baf0994967
   fingerprint: 46213225d775263932e072a461e524baf0994967
-  sha1: 56194eea046d436b1a81074cb67b00c386badafa
+  sha1: b6eb6dd831d23da361fc81cd9d1b76846be81f71
   dependencies:
   - ruby
 - name: cf-cassandra-broker
   version: 3cb1d4ee9c6bacbdf0012885a2342e78d61e2948
   fingerprint: 3cb1d4ee9c6bacbdf0012885a2342e78d61e2948
-  sha1: 4c13f33035ab0d949a2ef10d5b4f2b0678f0468f
+  sha1: 4c216fb7a6225bafe645f09d5aae48b183545509
   dependencies:
   - golang
 - name: common
   version: ba480a46c4b2aa9484fb24ed01a8649453573e6f
   fingerprint: ba480a46c4b2aa9484fb24ed01a8649453573e6f
-  sha1: cb773a88ae5cad0b18886666718609c39485f146
+  sha1: 1f66100b9e7b6902df04a9637a8d05482f41a59c
   dependencies: []
 - name: golang
   version: f57ddbc8d55d7a0f08775bf76bb6a27dc98c7ea7
   fingerprint: f57ddbc8d55d7a0f08775bf76bb6a27dc98c7ea7
-  sha1: 15a1684977deffe6ba981c7957b7134dd34734e1
+  sha1: 466abaf1bd8cd1b2cb13f60f4fd324f6f584694c
   dependencies: []
 - name: route-registrar
   version: e72b8acd56fa67fae270dae2b17e95fdba95017e
   fingerprint: e72b8acd56fa67fae270dae2b17e95fdba95017e
-  sha1: bde42a21de58705f518671e265558a229c241ce3
+  sha1: 246ec850af30ccefbe264afa570f338d26a6f865
   dependencies:
   - golang
 - name: ruby
   version: 9b59d2f2700da81a98c38c73cd27b6ccf26f188c
   fingerprint: 9b59d2f2700da81a98c38c73cd27b6ccf26f188c
-  sha1: 7e96d32d5aacec6f8ba7a2dc38ef56cbc3cae893
+  sha1: 6779f2f03a6006dc85c673d1286c8f798a9923a8
   dependencies: []
 jobs:
 - name: broker-deregistrar
   version: 30015fee8a0532ac7e5b72080dca95e85b810eda
   fingerprint: 30015fee8a0532ac7e5b72080dca95e85b810eda
-  sha1: 5ba2629a326a8de8103915a504d914f4dbae0eba
+  sha1: 40b4e42a29e194e0e6ecf52d62595629bd2a245c
 - name: broker-registrar
   version: 9f566e65b9c68b62521b77ea3105afe9f654396b
   fingerprint: 9f566e65b9c68b62521b77ea3105afe9f654396b
-  sha1: 8bea4b3ebf21ee9ec056ac041c21dca8c965796f
+  sha1: 5728e847eecceaf0e91b4dad63ee35faeb9507e9
 - name: cf-cassandra-broker
-  version: c3bda4730306667f6139085faedcd9a871faf4e9
-  fingerprint: c3bda4730306667f6139085faedcd9a871faf4e9
-  sha1: d599229e696c3294872757678f82e0036bc00a3c
-commit_hash: 08a48304
+  version: 7eb373e0db6eafad1b89e08143cefed560619871
+  fingerprint: 7eb373e0db6eafad1b89e08143cefed560619871
+  sha1: 68702233513e30ea2a098a4991651e44576c5741
+commit_hash: 605d8f0e
 uncommitted_changes: true
 name: cf-cassandra-broker
 version: '1'
