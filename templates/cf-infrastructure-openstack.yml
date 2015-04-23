@@ -1,0 +1,19 @@
+meta: ~
+
+compilation:
+  cloud_properties:
+    instance_type: m1.small
+  network: services
+  reuse_compilation_vms: true
+  workers: 2
+
+networks: (( merge ))
+
+resource_pools:
+  - cloud_properties:
+      instance_type: m1.small
+    name: services-small
+    network: services
+    stemcell:
+      name: bosh-openstack-kvm-ubuntu-trusty-go_agent
+      version: 2719.3
