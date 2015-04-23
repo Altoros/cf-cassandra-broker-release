@@ -35,7 +35,7 @@ properties:
     description: "Superuser password"
   cassandra.keyspace:
     description: "Administrative keyspace name"
-    default: "cf-broker"
+    default: "cf_broker"
 
   catalog:
     description: "Services catalog"
