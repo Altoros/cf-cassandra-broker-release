@@ -1,7 +1,7 @@
 compilation:
   cloud_properties:
     name: random
-  network: cassandra-network
+  network: services
   reuse_compilation_vms: true
   workers: 2
 director_uuid: c6f166bd-ddac-4f7d-9c57-d11c6ad5133b
@@ -9,7 +9,7 @@ jobs:
 - instances: 1
   name: cf-cassandra-broker
   networks:
-  - name: cassandra-network
+  - name: services
   properties:
     cassandra:
       nodes:
@@ -49,17 +49,17 @@ jobs:
       password: nats
       port: 4222
       user: nats
-    network_name: cassandra-network
+    network_name: services
     password: password
     username: admin
   release: cf-cassandra-broker
-  resource_pool: cassandra-small
+  resource_pool: services-small
   template: cf-cassandra-broker
 - instances: 1
   lifecycle: errand
   name: broker-registrar
   networks:
-  - name: cassandra-network
+  - name: services
   properties:
     broker:
       host: cassandra.10.244.0.34.xip.io
@@ -71,13 +71,13 @@ jobs:
       admin_username: admin
       api_url: https://api.10.244.0.34.xip.io
   release: cf-cassandra-broker
-  resource_pool: cassandra-small
+  resource_pool: services-small
   template: broker-registrar
 - instances: 1
   lifecycle: errand
   name: broker-deregistrar
   networks:
-  - name: cassandra-network
+  - name: services
   properties:
     broker:
       host: cassandra.10.244.0.34.xip.io
@@ -89,14 +89,13 @@ jobs:
       admin_username: admin
       api_url: https://api.10.244.0.34.xip.io
   release: cf-cassandra-broker
-  resource_pool: cassandra-small
+  resource_pool: services-small
   template: broker-deregistrar
 meta:
   cf:
     admin_password: admin
     admin_username: admin
     api_url: https://api.10.244.0.34.xip.io
-    apps_domain: 10.244.0.34.xip.io
     external_domain: 10.244.0.34.xip.io
     skip_ssl_validation: true
   environment: null
@@ -109,7 +108,7 @@ meta:
   syslog_aggregator: null
 name: cf-warden-cassandra-broker
 networks:
-- name: cassandra-network
+- name: services
   subnets:
   - cloud_properties:
       name: random
@@ -534,15 +533,8 @@ releases:
 resource_pools:
 - cloud_properties:
     name: random
-  name: cassandra-small
-  network: cassandra-network
-  stemcell:
-    name: bosh-warden-boshlite-ubuntu-trusty-go_agent
-    version: latest
-- cloud_properties:
-    name: random
-  name: cassandra-medium
-  network: cassandra-network
+  name: services-small
+  network: services
   stemcell:
     name: bosh-warden-boshlite-ubuntu-trusty-go_agent
     version: latest

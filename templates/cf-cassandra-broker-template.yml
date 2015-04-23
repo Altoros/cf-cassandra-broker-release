@@ -7,7 +7,6 @@ meta:
   environment: ~
   nats: (( merge ))
   cf:
-    apps_domain: (( merge ))
     external_domain: (( merge ))
     api_url: (( "https://api." meta.cf.external_domain ))
     admin_username: (( merge ))
@@ -20,11 +19,11 @@ director_uuid: (( merge ))
 
 releases:
 - name: cf-cassandra-broker
-  version: latest
+  version: (( merge || "latest" ))
 
 compilation:
   workers: 2
-  network: cassandra-network
+  network: services
   reuse_compilation_vms: true
   cloud_properties: (( merge ))
 
@@ -37,12 +36,8 @@ update:
 networks: (( merge ))
 
 resource_pools:
-  - name: cassandra-small
-    network: cassandra-network
-    stemcell: (( merge ))
-    cloud_properties: (( merge ))
-  - name: cassandra-medium
-    network: cassandra-network
+  - name: services-small
+    network: services
     stemcell: (( merge ))
     cloud_properties: (( merge ))
 
@@ -51,9 +46,9 @@ jobs:
     release: cf-cassandra-broker
     template: cf-cassandra-broker
     instances: 1
-    resource_pool: cassandra-small
+    resource_pool: services-small
     networks:
-    - name: cassandra-network
+    - name: services
     properties:
       <<: (( merge || nil ))
       username: (( merge ))
@@ -90,16 +85,16 @@ jobs:
           - nosql
           - database
       nats: (( meta.nats ))
-      network_name: cassandra-network
+      network_name: services
       external_host: (( "cassandra." meta.cf.external_domain ))
   - name: broker-registrar
     template: broker-registrar
     release: cf-cassandra-broker
     instances: 1
-    resource_pool: cassandra-small
+    resource_pool: services-small
     lifecycle: errand
     networks:
-    - name: cassandra-network
+    - name: services
     properties:
       cf:
         api_url: (( meta.cf.api_url ))
@@ -114,10 +109,10 @@ jobs:
     template: broker-deregistrar
     release: cf-cassandra-broker
     instances: 1
-    resource_pool: cassandra-small
+    resource_pool: services-small
     lifecycle: errand
     networks:
-    - name: cassandra-network
+    - name: services
     properties:
       cf:
         api_url: (( meta.cf.api_url ))

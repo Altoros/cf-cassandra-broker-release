@@ -1,0 +1,34 @@
+director_uuid: YOUR_DIRECTOR_UUID
+
+networks:
+  - name: services
+    type: dynamic
+    cloud_properties:
+      security_groups:
+        - default
+
+meta:
+  environment: YOUR_ENVIRONMENT_NAME
+  nats:
+    user: nats
+    password: NATS_PASSWORD_FROM_CF_RELEASE
+    machines:
+      - 10.10.80.11
+    port: 4222
+  cf:
+    # these come from your cf-release manifest
+    admin_username: YOUR_CF_ADMIN_USERNAME
+    admin_password: YOUR_CF_ADMIN_PASSWORD
+    skip_ssl_validation: false
+    external_domain: YOUR_CF_SYSTEM_DOMAIN
+
+jobs:
+  - name: cf-cassandra-broker
+    properties:
+      username: A_USERNAME_YOU_MAKE_UP
+      password: A_PASSWORD_YOU_MAKE_UP
+
+      cassandra:
+        nodes: LIST_OF_CASSANDRA_NODES
+        username: CASSNADRA_SUPERUSER_USERNAME
+        password: CASSNADRA_SUPERUSER_PASSWORD

@@ -8,15 +8,8 @@ compilation:
     name: random
 
 resource_pools:
-  - name: cassandra-small
-    network: cassandra-network
-    stemcell:
-      name: bosh-warden-boshlite-ubuntu-trusty-go_agent
-      version: latest
-    cloud_properties:
-      name: random
-  - name: cassandra-medium
-    network: cassandra-network
+  - name: services-small
+    network: services
     stemcell:
       name: bosh-warden-boshlite-ubuntu-trusty-go_agent
       version: latest
@@ -24,7 +17,7 @@ resource_pools:
       name: random
 
 networks:
-- name: cassandra-network
+- name: services
   subnets:
   - cloud_properties:
       name: random
