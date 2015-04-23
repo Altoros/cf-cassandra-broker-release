@@ -27,7 +27,9 @@ case $1 in
         $PACKAGE_DIR/bin/cf-cassandra-broker-migrate -c $JOB_DIR/config/cf-cassandra-broker.yml
     fi
 
-    $PACKAGE_DIR/bin/cf-cassandra-broker -c $JOB_DIR/config/cf-cassandra-broker.yml
+    $PACKAGE_DIR/bin/cf-cassandra-broker \
+      -c $JOB_DIR/config/cf-cassandra-broker.yml \
+      >>$LOG_DIR/cf-cassandra-broker.stdout.log 2>>$LOG_DIR/cf-cassandra-broker.stderr.log&
 
     ;;
 
