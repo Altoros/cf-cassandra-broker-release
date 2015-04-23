@@ -61,7 +61,7 @@ jobs:
       catalog:
         services:
         - bindable: true
-          name: Apache Cassandra
+          name: apache-cassandra
           description: Open source distributed database management system
           id: 33d2eeb0-0236-4c83-b494-da3faeb5b2e8
           metadata:
