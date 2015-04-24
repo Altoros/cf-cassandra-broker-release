@@ -19,12 +19,12 @@ Note: the broker-registrar errand will fail if the broker has already been regis
 1. First register the broker using the `cf` CLI.  You must be logged in as an admin.
 
     ```
-    $ cf create-service-broker rabbitmq BROKER_USERNAME BROKER_PASSWORD URL
+    $ cf create-service-broker apache-cassandra BROKER_USERNAME BROKER_PASSWORD URL
     ```
 
-    `BROKER_USERNAME` and `BROKER_PASSWORD` are the credentials Cloud Foundry will use to authenticate when making API calls to the service broker. Use the values for manifest properties `jobs.cf-rabbitmq-broker.properties.auth_username` and `jobs.cf-rabbitmq-broker.properties.auth_password`.
+    `BROKER_USERNAME` and `BROKER_PASSWORD` are the credentials Cloud Foundry will use to authenticate when making API calls to the service broker. Use the values for manifest properties `jobs.cf-cassandra-broker.properties.auth_username` and `jobs.cf-cassandra-broker.properties.auth_password`.
 
-    `URL` specifies where the Cloud Controller will access the RabbitMQ broker. Use the value of the manifest property `jobs.cf-rabbitmq-broker.properties.external_host`.
+    `URL` specifies where the Cloud Controller will access the Cassnadra broker. Use the value of the manifest property `jobs.cf-cassnadra-broker.properties.external_host`.
 
     For more information, see [Managing Service Brokers](http://docs.cloudfoundry.org/services/managing-service-brokers.html).
 
@@ -50,6 +50,6 @@ $ bosh run errand broker-deregistrar
 Run the following:
 
 ```
-$ cf purge-service-offering cassandra
-$ cf delete-service-broker cassandra
+$ cf purge-service-offering apache-cassandra
+$ cf delete-service-broker apache-cassandra
 ```
