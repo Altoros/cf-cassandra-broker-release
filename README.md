@@ -79,3 +79,62 @@ Since [cf-release](https://github.com/cloudfoundry/cf-release) v175, application
   </pre>
 
 Changes are only applied to new application containers; in order for an existing app to receive security group changes it must be restarted.
+
+## Running Acceptance Tests
+
+To run the Cassandra acceptance tests you will need:
+- a running CF instance
+- credentials for a CF Admin user
+- a deployed Cassandra Broker Release and the plan made public
+- a security group granting access to the service for applications
+
+### Using BOSH errands
+
+BOSH errands were introduced in version 2366 of the BOSH CLI, BOSH Director, and stemcells.
+
+The following properties must be included in the manifest (most will be there by default):
+- cf.api_url:
+- cf.admin_username:
+- cf.admin_password:
+- cf.apps_domain:
+- cf.skip_ssl_validation:
+- broker.host:
+
+```
+$ bosh run errand acceptance-tests
+```
+
+### Manually
+
+To run the acceptance tests manually you will also need an environment variable `$CONFIG` which points to a `.json` file that contains the application domain.
+
+1. Install `go` by following the directions found [here](http://golang.org/doc/install)
+2. `cd` into `cf-rabbitmq-release/src/acceptance-tests/`
+3. Update `cf-rabbitmq-release/src/acceptance-tests/integration_config.json`
+
+   The following commands provide a shortcut to configuring `integration_config.json` with values for a [bosh-lite](https://github.com/cloudfoundry/bosh-lite)
+deployment. Copy and paste this into your terminal, then open the resulting `integration_config.json` in an editor to replace values as appropriate for your environment.
+
+    ```bash
+    cat > integration_config.json <<EOF
+    {
+      "api":                 "api.10.244.0.34.xip.io",
+      "admin_user":          "admin",
+      "admin_password":      "admin",
+      "apps_domain":         "10.244.0.34.xip.io",
+      "service_name":        "rabbitmq",
+      "plan_name":           "free",
+      "broker_host":         "cassandra.10.244.0.34.xip.io",
+      "skip_ssl_validation": true
+    }
+    EOF
+    export CONFIG=$PWD/integration_config.json
+    ```
+
+    Note: `skip_ssl_validation` requires CLI v6.0.2 or newer.
+
+4. Run  the tests
+
+  ```
+  $ ./bin/test
+  ```
