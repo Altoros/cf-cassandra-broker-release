@@ -14,7 +14,7 @@ import (
 func TestService(t *testing.T) {
 	context_setup.TimeoutScale = CassandraIntegrationConfig.TimeoutScale
 
-	context_setup.SetupEnvironment(context_setup.NewContext(CassandraIntegrationConfig.IntegrationConfig, "RabbitMQATS"))
+	context_setup.SetupEnvironment(context_setup.NewContext(CassandraIntegrationConfig.IntegrationConfig, "CassandraATS"))
 
 	RegisterFailHandler(Fail)
 	RunSpecs(t, "Lifecycle tests")
@@ -42,4 +42,4 @@ var CassandraIntegrationConfig = helpers.LoadConfig()
 
 var AppName = ""
 
-var testAppPath = "../assets/app_sinatra_service"
+var testAppPath = "../../assets/app_sinatra_service"
