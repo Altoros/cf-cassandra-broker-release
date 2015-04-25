@@ -7,6 +7,7 @@ meta:
   environment: ~
   nats: (( merge ))
   cf:
+    apps_domain: (( merge ))
     external_domain: (( merge ))
     api_url: (( "https://api." meta.cf.external_domain ))
     admin_username: (( merge ))
@@ -123,5 +124,23 @@ jobs:
         host: (( jobs.cf-cassandra-broker.properties.external_host ))
         username: (( jobs.cf-cassandra-broker.properties.username ))
         password: (( jobs.cf-cassandra-broker.properties.password ))
+  - name: acceptance-tests
+    lifecycle: errand
+    template: acceptance-tests
+    instances: 1
+    resource_pool: services-small
+    networks:
+    - name: services
+    properties:
+      cf:
+        api_url: (( meta.cf.api_url ))
+        admin_username: (( meta.cf.admin_username ))
+        admin_password: (( meta.cf.admin_password ))
+        apps_domain: (( meta.cf.apps_domain ))
+        skip_ssl_validation: (( meta.cf.skip_ssl_validation || nil ))
+      broker:
+        host: (( jobs.cf-cassandra-broker.properties.external_host ))
+      catalog:
+        services: (( jobs.cf-cassandra-broker.properties.catalog.services ))
 
 properties: {}

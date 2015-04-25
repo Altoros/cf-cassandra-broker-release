@@ -28,7 +28,7 @@ jobs:
           longDescription: null
           providerDisplayName: Apache Cassandra
           supportUrl: null
-        name: Apache Cassandra
+        name: apache-cassandra
         plans:
         - description: A separate keyspace with unlimited access
           id: 946ce484-376b-41b4-8c4e-4bc830676115
@@ -91,11 +91,54 @@ jobs:
   release: cf-cassandra-broker
   resource_pool: services-small
   template: broker-deregistrar
+- instances: 1
+  lifecycle: errand
+  name: acceptance-tests
+  networks:
+  - name: services
+  properties:
+    broker:
+      host: cassandra.10.244.0.34.xip.io
+    catalog:
+      services:
+      - bindable: true
+        description: Open source distributed database management system
+        id: 33d2eeb0-0236-4c83-b494-da3faeb5b2e8
+        metadata:
+          displayName: Apache Cassandra
+          documentationUrl: http://docs.datastax.com/en/cassandra/2.0/cassandra/gettingStartedCassandraIntro.html
+          imageUrl: http://cassandra.apache.org/media/img/cassandra_logo.png
+          longDescription: null
+          providerDisplayName: Apache Cassandra
+          supportUrl: null
+        name: apache-cassandra
+        plans:
+        - description: A separate keyspace with unlimited access
+          id: 946ce484-376b-41b4-8c4e-4bc830676115
+          metadata:
+            costs:
+            - amount:
+                usd: 0
+              unit: MONTHLY
+            displayName: Keyspace
+          name: free
+        tags:
+        - nosql
+        - database
+    cf:
+      admin_password: admin
+      admin_username: admin
+      api_url: https://api.10.244.0.34.xip.io
+      apps_domain: 10.244.0.34.xip.io
+      skip_ssl_validation: true
+  resource_pool: services-small
+  template: acceptance-tests
 meta:
   cf:
     admin_password: admin
     admin_username: admin
     api_url: https://api.10.244.0.34.xip.io
+    apps_domain: 10.244.0.34.xip.io
     external_domain: 10.244.0.34.xip.io
     skip_ssl_validation: true
   environment: null

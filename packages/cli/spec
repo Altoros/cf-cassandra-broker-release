@@ -1,0 +1,6 @@
+---
+name: cli
+
+files:
+  - cli/cf-darwin-amd64.tgz
+  - cli/cf-linux-amd64.tgz

@@ -21,6 +21,7 @@ meta:
     admin_password: YOUR_CF_ADMIN_PASSWORD
     skip_ssl_validation: false
     external_domain: YOUR_CF_SYSTEM_DOMAIN
+    apps_domain: YOUR_CF_APPS_DOMAIN
 
 jobs:
   - name: cf-cassandra-broker

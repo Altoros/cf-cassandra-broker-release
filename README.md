@@ -53,3 +53,29 @@ Run the following:
 $ cf purge-service-offering apache-cassandra
 $ cf delete-service-broker apache-cassandra
 ```
+
+## Security Groups<a name="register_broker"></a>
+
+Since [cf-release](https://github.com/cloudfoundry/cf-release) v175, applications by default cannot to connect to IP addresses on the private network. This prevents applications from connecting to the Cassnadra service. To enable access to the service, create a new security group for the IPs configured in your manifest for the Cassnadra cluster.
+
+1. Add the rule to a file in the following json format; multiple rules are supported.
+
+  ```
+  [
+      {
+        "destination": "192.168.111.30-192.168.111.34",
+        "protocol": "tcp",
+        "ports": "9042"
+      }
+  ]
+  ```
+- Create a security group from the rule file.
+  <pre class="terminal">
+  $ cf create-security-group cassandra rule.json
+  </pre>
+- Enable the rule for all apps
+  <pre class="terminal">
+  $ cf bind-running-security-group cassandra
+  </pre>
+
+Changes are only applied to new application containers; in order for an existing app to receive security group changes it must be restarted.
