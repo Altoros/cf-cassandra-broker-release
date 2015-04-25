@@ -109,8 +109,8 @@ $ bosh run errand acceptance-tests
 To run the acceptance tests manually you will also need an environment variable `$CONFIG` which points to a `.json` file that contains the application domain.
 
 1. Install `go` by following the directions found [here](http://golang.org/doc/install)
-2. `cd` into `cf-rabbitmq-release/src/acceptance-tests/`
-3. Update `cf-rabbitmq-release/src/acceptance-tests/integration_config.json`
+2. `cd` into `cf-cassandra-broker-release/src/acceptance-tests/`
+3. Update `cf-cassandra-broker-release/src/acceptance-tests/integration_config.json`
 
    The following commands provide a shortcut to configuring `integration_config.json` with values for a [bosh-lite](https://github.com/cloudfoundry/bosh-lite)
 deployment. Copy and paste this into your terminal, then open the resulting `integration_config.json` in an editor to replace values as appropriate for your environment.
@@ -122,7 +122,7 @@ deployment. Copy and paste this into your terminal, then open the resulting `int
       "admin_user":          "admin",
       "admin_password":      "admin",
       "apps_domain":         "10.244.0.34.xip.io",
-      "service_name":        "rabbitmq",
+      "service_name":        "apache-cassandra",
       "plan_name":           "free",
       "broker_host":         "cassandra.10.244.0.34.xip.io",
       "skip_ssl_validation": true
