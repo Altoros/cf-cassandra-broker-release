@@ -19,3 +19,11 @@ ruby/yaml-0.1.5.tar.gz:
   object_id: 060693d5-2e14-40bd-84ef-a485786f5472
   sha: 8b78cb9f759c7d80db8a7328c0ebecfe34fde737
   size: 504897
+cli/cf-darwin-amd64.tgz:
+  object_id: fd5edf53-0ca8-4642-bbfe-04421aade43e
+  sha: 2b27e4e41079876dafb4543c7081d4231d967afa
+  size: 4863596
+cli/cf-linux-amd64.tgz:
+  object_id: 550463f7-374f-46cc-94c8-dbd5fa0215a4
+  sha: 6345a6d2a3fe016f874326816c63ed738afce196
+  size: 4908363
