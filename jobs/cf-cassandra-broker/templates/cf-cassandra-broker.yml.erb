@@ -7,7 +7,8 @@ cassandra:
   <% p("cassandra.nodes").each do |address| %>
   - <%= address %>
   <% end %>
-  port: <%= p("cassandra.port") %>
+  cql_port: <%= p("cassandra.cql_port") %>
+  thrift_port: <%= p("cassandra.thrift_port") %>
   keyspace: <%= p("cassandra.keyspace") %>
   username: <%= p("cassandra.username") %>
   password: <%= p("cassandra.password") %>

@@ -26,9 +26,12 @@ properties:
 
   cassandra.nodes:
     description: "Cassandra cluster nodes"
-  cassandra.port:
-    description: "Cassandra port"
+  cassandra.cql_port:
+    description: "Cassandra CQL port"
     default: 9042
+  cassandra.thrift_port:
+    description: "Cassandra Thrift port"
+    default: 9160
   cassandra.username:
     description: "Superuser username"
   cassandra.password:

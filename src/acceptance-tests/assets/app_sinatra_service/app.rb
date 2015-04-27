@@ -11,7 +11,7 @@ get "/test" do
       username: credentials["username"],
       password: credentials["password"],
       hosts:    credentials["nodes"],
-      port:     credentials["port"]
+      port:     credentials["cql_port"]
     })
     session = cluster.connect(credentials["keyspace"])
     session.execute("SELECT now() FROM system.local")
