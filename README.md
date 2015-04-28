@@ -65,7 +65,7 @@ Since [cf-release](https://github.com/cloudfoundry/cf-release) v175, application
       {
         "destination": "192.168.111.30-192.168.111.34",
         "protocol": "tcp",
-        "ports": "9042"
+        "ports": "9042,9160"
       }
   ]
   ```
