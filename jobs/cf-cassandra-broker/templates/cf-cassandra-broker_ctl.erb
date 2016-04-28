@@ -22,7 +22,8 @@ case $1 in
 
     # Run the migrations only on the first node
     if [ $JOB_INDEX -eq 0 ]; then
-        $PACKAGE_DIR/bin/cf-cassandra-broker-migrate -c $JOB_DIR/config/cf-cassandra-broker.yml
+        $PACKAGE_DIR/bin/cf-cassandra-broker-migrate -c $JOB_DIR/config/cf-cassandra-broker.yml \
+        >>$LOG_DIR/cf-cassandra-broker-migrate.stdout.log 2>>$LOG_DIR/cf-cassandra-broker-migrate.stderr.log
     fi
 
     $PACKAGE_DIR/bin/cf-cassandra-broker \
