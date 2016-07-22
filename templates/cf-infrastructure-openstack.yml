@@ -13,4 +13,4 @@ resource_pools:
       instance_type: m1.small
     stemcell:
       name: bosh-openstack-kvm-ubuntu-trusty-go_agent
-      version: (( merge || "2719.3" ))
+      version: (( merge || "latest" ))
