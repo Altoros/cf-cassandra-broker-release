@@ -1,18 +1,25 @@
 #!/bin/sh
 
+# Check for spiff installation
+which spiff > /dev/null 2>&1 || {
+  echo "Aborted. Please install spiff by following https://github.com/cloudfoundry-incubator/spiff#installation" 1>&2
+  exit 1
+}
+
 templates=$(dirname $0)/templates
 
-infrastructure=$1
+infrastructure="${1:?}"
 
 shift
 
 if [ "$infrastructure" != "openstack" ] && \
+	[ "$infrastructure" != "aws" ] && \
     [ "$infrastructure" != "warden" ] ; then
-  echo "usage: ./generate_deployment_manifest <warden|openstack> [stubs...]"
+  echo "usage: ./generate_deployment_manifest <aws|warden|openstack> [stubs...]" 1>&2
   exit 1
 fi
 
 spiff merge \
-  $templates/cf-cassandra-broker-template.yml \
-  $templates/cf-infrastructure-${infrastructure}.yml \
-  $*
+  "${templates}/cf-cassandra-broker-template.yml" \
+  "${templates}/cf-infrastructure-${infrastructure}.yml" \
+  "$@"

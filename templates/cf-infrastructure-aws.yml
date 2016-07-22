@@ -1,0 +1,18 @@
+meta: ~
+
+compilation:
+  cloud_properties:
+    instance_type: m3.medium
+    availability_zone: (( meta.availability_zone ))
+
+networks: (( merge ))
+
+resource_pools:
+  - name: services-small
+    network: services
+    cloud_properties:
+      instance_type: t2.small
+      availability_zone: (( meta.availability_zone ))
+    stemcell:
+      name: bosh-aws-xen-hvm-ubuntu-trusty-go_agent
+      version: (( merge || "latest" ))
