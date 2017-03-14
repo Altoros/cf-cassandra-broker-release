@@ -1,8 +1,4 @@
 ---
-golang/go1.4.2.linux-amd64.tar.gz:
-  object_id: c006e48f-1ffb-44e6-872a-4d8a633ae26c
-  sha: 5020af94b52b65cc9b6f11d50a67e4bae07b0aff
-  size: 62442704
 ruby/bundler-1.3.5.gem:
   object_id: 206879a7-298f-4be1-b618-7cfd2caaafda
   sha: 2cad3052a59b83f1f616e8202f5c714e46bd8523
@@ -27,3 +23,7 @@ cli/cf-linux-amd64.tgz:
   object_id: 550463f7-374f-46cc-94c8-dbd5fa0215a4
   sha: 6345a6d2a3fe016f874326816c63ed738afce196
   size: 4908363
+golang/go1.8.linux-amd64.tar.gz:
+  object_id: 7ab8460a-666e-45d3-ac5e-585ecd24a530
+  sha: a93fe8fc245e3554f956bc823f30ef4eb23c2068
+  size: 89803580
