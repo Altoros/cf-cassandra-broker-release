@@ -124,9 +124,9 @@ jobs:
         host: (( jobs.cf-cassandra-broker.properties.external_host ))
         username: (( jobs.cf-cassandra-broker.properties.username ))
         password: (( jobs.cf-cassandra-broker.properties.password ))
-  - name: acceptance-tests
+  - name: smoke-tests
     lifecycle: errand
-    template: acceptance-tests
+    template: smoke-tests
     instances: 1
     resource_pool: services-small
     networks:
@@ -137,6 +137,7 @@ jobs:
         admin_username: (( meta.cf.admin_username ))
         admin_password: (( meta.cf.admin_password ))
         apps_domain: (( meta.cf.apps_domain ))
+        system_domain: (( meta.cf.external_domain ))
         skip_ssl_validation: (( meta.cf.skip_ssl_validation || nil ))
       broker:
         host: (( jobs.cf-cassandra-broker.properties.external_host ))
