@@ -1,0 +1,4 @@
+set -e -x
+
+mkdir -p ${BOSH_INSTALL_TARGET}/src/github.com/Altoros/cf-cassandra-smoke-tests
+cp -a smoke-tests/* ${BOSH_INSTALL_TARGET}/src/github.com/Altoros/cf-cassandra-smoke-tests

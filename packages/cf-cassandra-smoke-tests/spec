@@ -1,0 +1,5 @@
+---
+name: cf-cassandra-smoke-tests
+
+files:
+  - smoke-tests/**/*

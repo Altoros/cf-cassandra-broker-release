@@ -1,0 +1,29 @@
+---
+name: smoke-tests
+
+packages:
+  - cf-cassandra-smoke-tests
+  - golang
+  - cli
+
+templates:
+  errand.sh.erb: bin/run
+
+properties:
+  cf.api_url:
+    description: 'Full URL of Cloud Foundry API'
+  cf.admin_username:
+    description: 'Username of the admin user'
+  cf.admin_password:
+    description: 'Password of the admin user'
+  cf.system_domain:
+    description: 'Full URL of Cloud Foundry System Domain'
+  smoke_tests.apps_domain:
+    description: 'Shared domain for pushed apps'
+    default: ""
+  cf.skip_ssl_validation:
+    description: 'Whether to add --skip-ssl-validation for cf cli'
+    default: false
+
+  catalog.services:
+    description: 'Information about the cassandra service'

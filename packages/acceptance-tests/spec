@@ -1,8 +1,0 @@
-name: acceptance-tests
-
-dependencies:
-  - golang
-  - cli
-
-files:
-  - acceptance-tests/**/*
