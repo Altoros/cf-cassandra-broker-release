@@ -1,0 +1,55 @@
+---
+packages:
+- name: cf-cassandra-broker
+  version: 7de21bfc9c8b1c799b2cbb844aac5ed540aefe95
+  fingerprint: 7de21bfc9c8b1c799b2cbb844aac5ed540aefe95
+  sha1: 59f2b18c8775d514780f99a60921aeb7d4df26ab
+  dependencies:
+  - golang
+- name: cf-cassandra-smoke-tests
+  version: a4adddfc0d2d4bd9d965e42e4616384a78bdcd18
+  fingerprint: a4adddfc0d2d4bd9d965e42e4616384a78bdcd18
+  sha1: 6e98c55afba02e0276892f7b48954252c75cfa1d
+  dependencies: []
+- name: cli
+  version: 6ad081aaa07a19e39bf8704b62c73c55cca8ca11
+  fingerprint: 6ad081aaa07a19e39bf8704b62c73c55cca8ca11
+  sha1: 3319ec0e9b7c031ec2cd8be680217aa7f91aebc7
+  dependencies: []
+- name: common
+  version: ba480a46c4b2aa9484fb24ed01a8649453573e6f
+  fingerprint: ba480a46c4b2aa9484fb24ed01a8649453573e6f
+  sha1: 1f66100b9e7b6902df04a9637a8d05482f41a59c
+  dependencies: []
+- name: golang
+  version: 70e164533c85aa6458548089a48563f9eca6c03d
+  fingerprint: 70e164533c85aa6458548089a48563f9eca6c03d
+  sha1: 1622c32282c11d3d2429a1e586c9d279ff8ec765
+  dependencies: []
+- name: route-registrar
+  version: e72b8acd56fa67fae270dae2b17e95fdba95017e
+  fingerprint: e72b8acd56fa67fae270dae2b17e95fdba95017e
+  sha1: 246ec850af30ccefbe264afa570f338d26a6f865
+  dependencies:
+  - golang
+jobs:
+- name: broker-deregistrar
+  version: 7f11bf410ad92c5f1e08e9fcd758ce3d5d1e2edb
+  fingerprint: 7f11bf410ad92c5f1e08e9fcd758ce3d5d1e2edb
+  sha1: b51a79f8d9299869b668024f69222551786ea3fc
+- name: broker-registrar
+  version: d9ea2ec5501eb977dfc69c832edd081aea337e79
+  fingerprint: d9ea2ec5501eb977dfc69c832edd081aea337e79
+  sha1: 941952542f623c9cf363a5e98af03cedfc7ec07e
+- name: cf-cassandra-broker
+  version: 40b6b689eaa859463df1bc81d4db40fdaf300c3c
+  fingerprint: 40b6b689eaa859463df1bc81d4db40fdaf300c3c
+  sha1: ced94485294f43d49fb9fd68160dfb9e7442299e
+- name: smoke-tests
+  version: 204ddca8fd8facce038e00796fc2e672c9e20b6d
+  fingerprint: 204ddca8fd8facce038e00796fc2e672c9e20b6d
+  sha1: 47c967cbefccba51599db9ea77b606e2e7d260a8
+commit_hash: aa38a318
+uncommitted_changes: true
+name: cf-cassandra-broker
+version: 10.0.0
