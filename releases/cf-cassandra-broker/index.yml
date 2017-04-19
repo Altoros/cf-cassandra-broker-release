@@ -22,4 +22,6 @@ builds:
     version: '9.1'
   3e55b496-fd82-4247-abde-819687004a61:
     version: 10.0.0
+  49366e70-0512-4551-b43d-e703569f32e2:
+    version: 10.0.1
 format-version: '2'
