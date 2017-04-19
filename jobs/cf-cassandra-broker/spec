@@ -54,5 +54,3 @@ properties:
 
   external_host:
     description: "Host used to register the broker. Domain is often the same as system domain."
-  network_name:
-    description: "The name of the network (needed for the syslog aggregator)"

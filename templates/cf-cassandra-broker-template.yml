@@ -86,7 +86,6 @@ jobs:
           - nosql
           - database
       nats: (( meta.nats ))
-      network_name: services
       external_host: (( "cassandra." meta.cf.external_domain ))
   - name: broker-registrar
     template: broker-registrar

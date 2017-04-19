@@ -49,7 +49,6 @@ jobs:
       password: nats
       port: 4222
       user: nats
-    network_name: services
     password: password
     username: admin
   release: cf-cassandra-broker
