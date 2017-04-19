@@ -15,6 +15,10 @@ packages:
 - common
 - route-registrar
 
+consumes:
+- name: cassandra
+  type: cassandra
+
 properties:
   username:
     description: "Basic Auth username for the service broker"

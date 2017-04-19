@@ -1,12 +1,18 @@
+<%
+  cassandra_addrs = nil
+  if_link("cassandra") do |cassandra|
+    cassandra_addrs = link('cassandra').instances.map { |instance| instance.address }
+  end.else do
+    cassandra_addrs = p("cassandra.nodes")
+  end
+%>
+---
 username: <%= p("username") %>
 password: <%= p("password") %>
 port: <%= p("port") %>
 
 cassandra:
-  nodes:
-  <% p("cassandra.nodes").each do |address| %>
-  - <%= address %>
-  <% end %>
+  nodes: <%= cassandra_addrs %>
   cql_port: <%= p("cassandra.cql_port") %>
   thrift_port: <%= p("cassandra.thrift_port") %>
   keyspace: <%= p("cassandra.keyspace") %>
