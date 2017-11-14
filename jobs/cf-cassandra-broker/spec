@@ -18,6 +18,9 @@ packages:
 consumes:
 - name: cassandra
   type: cassandra
+- name: nats
+  type: nats
+  optional: true
 
 properties:
   username:
@@ -27,6 +30,12 @@ properties:
   port:
     description: "Port for registering the service broker"
     default: 80
+
+  broker.name:
+    description: 'Name of the service broker'
+
+  cf.system_domain:
+    description: "The CF system domain"
 
   cassandra.nodes:
     description: "Cassandra cluster nodes"

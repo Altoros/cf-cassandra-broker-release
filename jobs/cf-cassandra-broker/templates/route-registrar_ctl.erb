@@ -25,7 +25,7 @@ start)
 
   $PACKAGE_DIR/bin/route-registrar \
     -pidfile=$PIDFILE \
-    -configFile=/var/vcap/jobs/cf-cassandra-broker/config/registrar_settings.yml \
+    -configPath=/var/vcap/jobs/cf-cassandra-broker/config/registrar_settings.yml \
     >>$LOG_DIR/route-registrar.stdout.log 2>>$LOG_DIR/route-registrar.stderr.log&
   ;;
 

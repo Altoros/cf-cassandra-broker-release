@@ -13,3 +13,27 @@
 [submodule "src/cf-cassandra-broker"]
 	path = src/cf-cassandra-broker
 	url = git@github.com:Altoros/cf-cassandra-broker.git
+[submodule "src/code.cloudfoundry.org/lager"]
+	path = src/code.cloudfoundry.org/lager
+	url = https://github.com/cloudfoundry/lager.git
+[submodule "src/code.cloudfoundry.org/multierror"]
+	path = src/code.cloudfoundry.org/multierror
+	url = https://github.com/cloudfoundry/multierror.git
+[submodule "src/code.cloudfoundry.org/route-registrar"]
+	path = src/code.cloudfoundry.org/route-registrar
+	url = https://github.com/cloudfoundry/route-registrar.git
+[submodule "src/github.com/nats-io/nats"]
+	path = src/github.com/nats-io/nats
+	url = https://github.com/nats-io/go-nats.git
+[submodule "src/github.com/nats-io/nuid"]
+	path = src/github.com/nats-io/nuid
+	url = https://github.com/nats-io/nuid.git
+[submodule "src/github.com/tedsuo/ifrit"]
+	path = src/github.com/tedsuo/ifrit
+	url = https://github.com/tedsuo/ifrit.git
+[submodule "src/github.com/nu7hatch/gouuid"]
+	path = src/github.com/nu7hatch/gouuid
+	url = https://github.com/nu7hatch/gouuid.git
+[submodule "src/gopkg.in/yaml.v2"]
+	path = src/gopkg.in/yaml.v2
+	url = https://gopkg.in/yaml.v2
