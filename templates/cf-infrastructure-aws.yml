@@ -14,5 +14,5 @@ resource_pools:
       instance_type: t2.small
       availability_zone: (( meta.availability_zone ))
     stemcell:
-      name: bosh-aws-xen-hvm-ubuntu-trusty-go_agent
+      name: bosh-aws-xen-hvm-ubuntu-xenial-go_agent
       version: (( merge || "latest" ))

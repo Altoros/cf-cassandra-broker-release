@@ -138,3 +138,7 @@ deployment. Copy and paste this into your terminal, then open the resulting `int
   ```
   $ ./bin/test
   ```
+
+### NOTE: 
+If somehow bosh will not follow symlinks (packages/common;src/common) while you creating bosh-release - then just replace the links with actual files.
+

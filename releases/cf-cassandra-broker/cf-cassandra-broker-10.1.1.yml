@@ -1,0 +1,58 @@
+name: cf-cassandra-broker
+version: 10.1.1
+commit_hash: 04b8583
+uncommitted_changes: true
+jobs:
+- name: broker-deregistrar
+  version: 1a801143f37dbff6b7967d9e4808a4a58dd49da0
+  fingerprint: 1a801143f37dbff6b7967d9e4808a4a58dd49da0
+  sha1: e2b060d915fd65e9d1932953699fc450b21fed6b
+- name: broker-registrar
+  version: 680499282f8368b524ccb4bd9dd0456f95589dd4
+  fingerprint: 680499282f8368b524ccb4bd9dd0456f95589dd4
+  sha1: e68e5e7aad157ffc6aaa857390a5d66d947cea38
+- name: cf-cassandra-broker
+  version: 76b2e33993ca2bdc39c6f43621d36570d39e4196
+  fingerprint: 76b2e33993ca2bdc39c6f43621d36570d39e4196
+  sha1: 3aafd91eb5598b04b8dc1a43796658b7b2fd5440
+- name: smoke-tests
+  version: 1882c2fa816373b1d2428fd5788a11f0f0bad28a
+  fingerprint: 1882c2fa816373b1d2428fd5788a11f0f0bad28a
+  sha1: 9bdce507d8d283985de4283d2536e104aa1c1093
+packages:
+- name: cf-cassandra-broker
+  version: a1e59b86830c50bd054e2fb79e6c714c3bbd9760
+  fingerprint: a1e59b86830c50bd054e2fb79e6c714c3bbd9760
+  sha1: fc6bd4efd6cadd91dc7a8d13a7183756a130daef
+  dependencies:
+  - golang
+- name: cf-cassandra-smoke-tests
+  version: 52fd243744403fb777846dd4706a8e9252bd4cde
+  fingerprint: 52fd243744403fb777846dd4706a8e9252bd4cde
+  sha1: a8954e65d94f5b06815da07a7c7c3299f7d3854d
+  dependencies: []
+- name: cli
+  version: 6ad081aaa07a19e39bf8704b62c73c55cca8ca11
+  fingerprint: 6ad081aaa07a19e39bf8704b62c73c55cca8ca11
+  sha1: 3319ec0e9b7c031ec2cd8be680217aa7f91aebc7
+  dependencies: []
+- name: common
+  version: ba480a46c4b2aa9484fb24ed01a8649453573e6f
+  fingerprint: ba480a46c4b2aa9484fb24ed01a8649453573e6f
+  sha1: 1f66100b9e7b6902df04a9637a8d05482f41a59c
+  dependencies: []
+- name: golang
+  version: 3a8f7e84c16566b8a4480918abb3275f6c996a85
+  fingerprint: 3a8f7e84c16566b8a4480918abb3275f6c996a85
+  sha1: 57888aa744776599dc1f6c91d61af5ac82e10778
+  dependencies: []
+- name: route-registrar
+  version: fcae70227178c7f05dded228b1298ca48b929653
+  fingerprint: fcae70227178c7f05dded228b1298ca48b929653
+  sha1: 41318ba759f8b5375d32770964e80cac84ef1336
+  dependencies:
+  - golang
+license:
+  version: b590cc156cd1fc6a6e0a260f924056147c1004a6
+  fingerprint: b590cc156cd1fc6a6e0a260f924056147c1004a6
+  sha1: bdc5be688f247ebd4bb1007d27054e718f78a9a2

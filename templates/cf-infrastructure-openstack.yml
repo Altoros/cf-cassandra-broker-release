@@ -12,5 +12,5 @@ resource_pools:
     cloud_properties:
       instance_type: m1.small
     stemcell:
-      name: bosh-openstack-kvm-ubuntu-trusty-go_agent
+      name: bosh-openstack-kvm-ubuntu-xenial-go_agent
       version: (( merge || "latest" ))
