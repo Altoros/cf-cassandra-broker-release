@@ -1,8 +1,8 @@
 cli/cf-cli_6.25.0_linux_x86-64.tgz:
   size: 5088758
-  object_id: 4fc935f4-9ea1-4284-aba8-edd94214c258
+  object_id: f397662b-240c-4bae-7f49-036df662764d
   sha: 82728ff9fed87554a14a2e5d2b4b743b8f2885ae
 golang/go1.8.5.linux-amd64.tar.gz:
   size: 99077377
-  object_id: f5f75a85-92e1-446f-88a9-367601420d33
+  object_id: d1b95433-c3e9-4696-7c2c-baeca81866cd
   sha: 71d2e29b7ea053e411ed4ba6200db967481ddead
